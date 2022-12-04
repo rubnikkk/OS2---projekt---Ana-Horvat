@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 
 namespace OS2___projekt___Ana_Horvat
 {
-    public partial class Main : Form
+    public partial class Simetricna : Form
     {
         string filelines;
         string filename;
@@ -22,9 +22,10 @@ namespace OS2___projekt___Ana_Horvat
         byte[] hashTajniKljuc;
         byte[] hashIv;
         byte[] hashKriptirano;
-        public Main()
+        public Simetricna()
         {
             InitializeComponent();
+            simetricnaKriptografijaToolStripMenuItem.BackColor = Color.FromArgb(204,229,255);
         }
 
         private void BtnKreirajTajniKljuc_ClickAsync(object sender, EventArgs e)
@@ -61,7 +62,7 @@ namespace OS2___projekt___Ana_Horvat
 
             if (Provjera())
             {
-                string tekst = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\originalna_datoteka.txt");
+                string tekst = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\aes_originalna.txt");
 
                 kriptirano = EncryptStringToBytes_Aes(tekst, tajniKljuc, iv);
 
@@ -178,6 +179,53 @@ namespace OS2___projekt___Ana_Horvat
             }
         
             return ispravno;
+        }
+
+        private void simetricnaKriptografijaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HideAll();
+            ShowAES();
+        }
+
+        private void asimetricnaKriptografijaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            HideAll();
+            this.Visible = false;
+            Asimetricna asimetricna = new Asimetricna();
+            asimetricna.FormClosed += (s, args) => this.Close();
+            asimetricna.Show();
+        }
+
+        private void izracunSazetkaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HideAll();
+        }
+
+        private void digitalniPotpisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HideAll();
+        }
+
+        private void HideAll()
+        {
+            BtnDekriptirajSimetricnimAlgoritmom.Visible = false;
+            BtnKreirajTajniKljuc.Visible = false;
+            BtnKriptirajSimetricnimAlgoritmom.Visible = false;
+            BtnOdaberiOriginalnuDatoteku.Visible = false;
+            TxtDekriptiraniAES.Visible = false;
+            TxtKriptiraniTekst.Visible = false;
+            TxtOriginalnaDatoteka.Visible = false;
+        }
+
+        private void ShowAES()
+        {
+            BtnDekriptirajSimetricnimAlgoritmom.Visible = true;
+            BtnKreirajTajniKljuc.Visible = true;
+            BtnKriptirajSimetricnimAlgoritmom.Visible = true;
+            BtnOdaberiOriginalnuDatoteku.Visible = true;
+            TxtDekriptiraniAES.Visible = true;
+            TxtKriptiraniTekst.Visible = true;
+            TxtOriginalnaDatoteka.Visible = true;
         }
     }
 }

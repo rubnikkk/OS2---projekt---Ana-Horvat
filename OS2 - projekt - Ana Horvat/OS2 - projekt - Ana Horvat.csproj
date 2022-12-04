@@ -46,16 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main.cs">
+    <Compile Include="Asimetricna.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="Asimetricna.Designer.cs">
+      <DependentUpon>Asimetricna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Simetricna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Simetricna.Designer.cs">
+      <DependentUpon>Simetricna.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="Asimetricna.resx">
+      <DependentUpon>Asimetricna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Simetricna.resx">
+      <DependentUpon>Simetricna.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
