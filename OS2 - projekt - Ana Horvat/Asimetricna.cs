@@ -19,7 +19,7 @@ namespace OS2___projekt___Ana_Horvat
         string filelines;
         string filename;
 
-        RSAParameters javniKljuc, privatniKljuc;
+        RSAParameters publicKey, privateKey;
 
         public Asimetricna()
         {
@@ -45,12 +45,12 @@ namespace OS2___projekt___Ana_Horvat
         private void BtnKreirajKljuceve_Click(object sender, EventArgs e)
         {
        
-            javniKljuc = csp.ExportParameters(false);
-            string javniString = RSAParametersToString(javniKljuc);
+            publicKey = csp.ExportParameters(false);
+            string javniString = RSAParametersToString(publicKey);
             File.WriteAllText("javni_kljuc.txt", javniString);
 
-            privatniKljuc = csp.ExportParameters(false);
-            string privatniString = RSAParametersToString(privatniKljuc);
+            privateKey = csp.ExportParameters(false);
+            string privatniString = RSAParametersToString(privateKey);
             File.WriteAllText("privatni_kljuc.txt", privatniString);
 
         }
@@ -104,10 +104,12 @@ namespace OS2___projekt___Ana_Horvat
                 string privateKeyFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\privatni_kljuc.txt");
 
                 RSAParameters privateKey = StringToRSAParameters(privateKeyFile);
+
                 csp.ImportParameters(privateKey);
-                var bytesCypherText = Convert.FromBase64String(inputCypherTextFile);
-                
+
+                var bytesCypherText = Convert.FromBase64String(inputCypherTextFile);           
                 var bytesPlainText = csp.Decrypt(bytesCypherText, false);
+
                 string originalPlainText = Encoding.Unicode.GetString(bytesPlainText);
                            
                 TxtDekriptiraniAES.Text = originalPlainText;

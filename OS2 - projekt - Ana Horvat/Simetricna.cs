@@ -16,12 +16,12 @@ namespace OS2___projekt___Ana_Horvat
     {
         string filelines;
         string filename;
-        byte[] tajniKljuc;
+        byte[] secretKey;
         byte[] iv;
-        byte[] kriptirano;
-        byte[] hashTajniKljuc;
+        byte[] cypher;
+        byte[] hashSecretKey;
         byte[] hashIv;
-        byte[] hashKriptirano;
+        byte[] hashCypher;
         public Simetricna()
         {
             InitializeComponent();
@@ -32,9 +32,9 @@ namespace OS2___projekt___Ana_Horvat
         {
             using (Aes myAes = Aes.Create())
             {
-                tajniKljuc = myAes.Key;
-                File.WriteAllText("tajni_kljuc.txt", Encoding.Default.GetString(tajniKljuc));
-                hashTajniKljuc = GetFileHash("tajni_kljuc.txt");
+                secretKey = myAes.Key;
+                File.WriteAllText("tajni_kljuc.txt", Encoding.Default.GetString(secretKey));
+                hashSecretKey = GetFileHash("tajni_kljuc.txt");
 
                 iv = myAes.IV;
                 File.WriteAllText("iv.txt", Encoding.Default.GetString(iv));
@@ -60,16 +60,16 @@ namespace OS2___projekt___Ana_Horvat
         private void BtnKriptirajSimetricnimAlgoritmom_Click(object sender, EventArgs e)
         {
 
-            if (Provjera())
+            if (Check())
             {
-                string tekst = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\aes_originalna.txt");
+                string text = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\aes_originalna.txt");
 
-                kriptirano = EncryptStringToBytes_Aes(tekst, tajniKljuc, iv);
+                cypher = EncryptStringToBytes_Aes(text, secretKey, iv);
 
-                File.WriteAllText("kriptirani_aes.txt", String.Concat(kriptirano));
-                hashKriptirano = GetFileHash("kriptirani_aes.txt");
+                File.WriteAllText("kriptirani_aes.txt", String.Concat(cypher));
+                hashCypher = GetFileHash("kriptirani_aes.txt");
 
-                TxtKriptiraniTekst.Text = String.Concat(kriptirano);
+                TxtKriptiraniTekst.Text = String.Concat(cypher);
             }
             else
             {
@@ -113,9 +113,9 @@ namespace OS2___projekt___Ana_Horvat
 
         private void BtnDekriptirajSimetricnimAlgoritmom_Click(object sender, EventArgs e)
         {
-            if (Provjera() && hashKriptirano.SequenceEqual(GetFileHash("kriptirani_aes.txt")))
+            if (Check() && hashCypher.SequenceEqual(GetFileHash("kriptirani_aes.txt")))
             {
-                TxtDekriptiraniAES.Text = DecryptStringFromBytes_Aes(kriptirano, tajniKljuc, iv);
+                TxtDekriptiraniAES.Text = DecryptStringFromBytes_Aes(cypher, secretKey, iv);
             }
             else
             {
@@ -164,21 +164,21 @@ namespace OS2___projekt___Ana_Horvat
                 return sha1.ComputeHash(stream);
         }
 
-        private bool Provjera ()
+        private bool Check()
         {
-            bool ispravno = true;
+            bool ok = true;
 
-            if (!hashTajniKljuc.SequenceEqual(GetFileHash("tajni_kljuc.txt")))
+            if (!hashSecretKey.SequenceEqual(GetFileHash("tajni_kljuc.txt")))
             {
-                ispravno = false;
+                ok = false;
             }
 
             if (!hashIv.SequenceEqual(GetFileHash("iv.txt")))
             {
-                ispravno = false;
+                ok = false;
             }
         
-            return ispravno;
+            return ok;
         }
 
         private void simetricnaKriptografijaToolStripMenuItem_Click(object sender, EventArgs e)
