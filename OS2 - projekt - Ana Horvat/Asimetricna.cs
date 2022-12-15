@@ -49,7 +49,7 @@ namespace OS2___projekt___Ana_Horvat
             string javniString = RSAParametersToString(publicKey);
             File.WriteAllText("javni_kljuc.txt", javniString);
 
-            privateKey = csp.ExportParameters(false);
+            privateKey = csp.ExportParameters(true);
             string privatniString = RSAParametersToString(privateKey);
             File.WriteAllText("privatni_kljuc.txt", privatniString);
 
