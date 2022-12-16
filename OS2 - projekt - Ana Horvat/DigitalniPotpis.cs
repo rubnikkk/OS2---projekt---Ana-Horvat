@@ -103,19 +103,43 @@ namespace OS2___projekt___Ana_Horvat
             csp.ImportParameters(publicKey);
 
             var bytesPlainText = System.Text.Encoding.Unicode.GetBytes(plainText);
-            var bytesCypherText = csp.Encrypt(bytesPlainText, false);
+            var bytesCypherText = csp.Encrypt(bytesPlainText, true);
 
-            string cypherText = Convert.ToBase64String(bytesCypherText);
+            return Convert.ToBase64String(bytesCypherText);
+        }
 
-            return cypherText;
+        public static string DecryptText(string cypherText, RSAParameters privateKey)
+        {
+
+            RSACryptoServiceProvider csp = new RSACryptoServiceProvider();
+
+            csp.ImportParameters(privateKey);
+
+            var bytesCypherText = Convert.FromBase64String(cypherText);
+            var bytesPlainText = csp.Decrypt(bytesCypherText, false);
+
+            return Encoding.Unicode.GetString(bytesPlainText);
         }
 
         private void BtnProvjeriDigitalniPotpis_Click(object sender, EventArgs e)
         {
             string inputFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\datoteka.txt");
-            string inputKeyFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\privatni_kljuc.txt");
+            string inputKeyFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\javni_kljuc.txt");
             RSAParameters inputKey = StringToRSAParameters(inputKeyFile);
 
+            string inputSignature = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\hashEncrypted.txt");
+
+            string decryptedHash = DecryptText(inputSignature, inputKey);
+            string hash = Hash(inputFile);
+
+            if (decryptedHash == hash)
+            {
+                MessageBox.Show("Potpis je valjan!");
+            }
+            else
+            {
+                MessageBox.Show("Potpis nije valjan!");
+            }
         }
     }
 }
