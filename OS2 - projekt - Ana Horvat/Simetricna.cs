@@ -181,15 +181,8 @@ namespace OS2___projekt___Ana_Horvat
             return ok;
         }
 
-        private void simetricnaKriptografijaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            HideAll();
-            ShowAES();
-        }
-
         private void asimetricnaKriptografijaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            HideAll();
             this.Visible = false;
             Asimetricna asimetricna = new Asimetricna();
             asimetricna.FormClosed += (s, args) => this.Close();
@@ -198,34 +191,16 @@ namespace OS2___projekt___Ana_Horvat
 
         private void izracunSazetkaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            HideAll();
+            this.Visible = false;
+            IzracunSazetka izracunSazetka = new IzracunSazetka();
+            izracunSazetka.FormClosed += (s, args) => this.Close();
+            izracunSazetka.Show();
         }
 
         private void digitalniPotpisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            HideAll();
+            //TODO
         }
 
-        private void HideAll()
-        {
-            BtnDekriptirajSimetricnimAlgoritmom.Visible = false;
-            BtnKreirajTajniKljuc.Visible = false;
-            BtnKriptirajSimetricnimAlgoritmom.Visible = false;
-            BtnOdaberiOriginalnuDatoteku.Visible = false;
-            TxtDekriptiraniAES.Visible = false;
-            TxtKriptiraniTekst.Visible = false;
-            TxtOriginalnaDatoteka.Visible = false;
-        }
-
-        private void ShowAES()
-        {
-            BtnDekriptirajSimetricnimAlgoritmom.Visible = true;
-            BtnKreirajTajniKljuc.Visible = true;
-            BtnKriptirajSimetricnimAlgoritmom.Visible = true;
-            BtnOdaberiOriginalnuDatoteku.Visible = true;
-            TxtDekriptiraniAES.Visible = true;
-            TxtKriptiraniTekst.Visible = true;
-            TxtOriginalnaDatoteka.Visible = true;
-        }
     }
 }

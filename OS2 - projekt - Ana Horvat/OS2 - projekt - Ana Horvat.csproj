@@ -52,6 +52,12 @@
     <Compile Include="Asimetricna.Designer.cs">
       <DependentUpon>Asimetricna.cs</DependentUpon>
     </Compile>
+    <Compile Include="IzracunSazetka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IzracunSazetka.Designer.cs">
+      <DependentUpon>IzracunSazetka.cs</DependentUpon>
+    </Compile>
     <Compile Include="Simetricna.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Asimetricna.resx">
       <DependentUpon>Asimetricna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IzracunSazetka.resx">
+      <DependentUpon>IzracunSazetka.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Simetricna.resx">
       <DependentUpon>Simetricna.cs</DependentUpon>

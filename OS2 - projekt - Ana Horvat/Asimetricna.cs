@@ -130,12 +130,15 @@ namespace OS2___projekt___Ana_Horvat
 
         private void izracunSazetkaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Visible = false;
+            IzracunSazetka izracunSazetka = new IzracunSazetka();
+            izracunSazetka.FormClosed += (s, args) => this.Close();
+            izracunSazetka.Show();
         }
 
         private void digitalniPotpisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //TODO
         }
               
     }

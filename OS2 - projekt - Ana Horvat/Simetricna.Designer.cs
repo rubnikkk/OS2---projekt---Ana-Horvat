@@ -126,7 +126,6 @@ namespace OS2___projekt___Ana_Horvat
             this.simetricnaKriptografijaToolStripMenuItem.Name = "simetricnaKriptografijaToolStripMenuItem";
             this.simetricnaKriptografijaToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
             this.simetricnaKriptografijaToolStripMenuItem.Text = "Simetrična kriptografija";
-            this.simetricnaKriptografijaToolStripMenuItem.Click += new System.EventHandler(this.simetricnaKriptografijaToolStripMenuItem_Click);
             // 
             // asimetricnaKriptografijaToolStripMenuItem1
             // 
