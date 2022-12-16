@@ -52,6 +52,12 @@
     <Compile Include="Asimetricna.Designer.cs">
       <DependentUpon>Asimetricna.cs</DependentUpon>
     </Compile>
+    <Compile Include="DigitalniPotpis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DigitalniPotpis.Designer.cs">
+      <DependentUpon>DigitalniPotpis.cs</DependentUpon>
+    </Compile>
     <Compile Include="IzracunSazetka.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Asimetricna.resx">
       <DependentUpon>Asimetricna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DigitalniPotpis.resx">
+      <DependentUpon>DigitalniPotpis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IzracunSazetka.resx">
       <DependentUpon>IzracunSazetka.cs</DependentUpon>

@@ -41,7 +41,10 @@ namespace OS2___projekt___Ana_Horvat
 
         private void digitalniPotpisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO
+            this.Visible = false;
+            DigitalniPotpis digitalniPotpis = new DigitalniPotpis();
+            digitalniPotpis.FormClosed += (s, args) => this.Close();
+            digitalniPotpis.Show();
         }
 
         private void BtnOdaberiOriginalnuDatoteku_Click(object sender, EventArgs e)
