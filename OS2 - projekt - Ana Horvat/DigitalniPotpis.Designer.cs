@@ -29,6 +29,7 @@ namespace OS2___projekt___Ana_Horvat
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DigitalniPotpis));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.simetricnaKriptografijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asimetricnaKriptografijaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -129,6 +130,7 @@ namespace OS2___projekt___Ana_Horvat
             this.Controls.Add(this.TxtOriginalnaDatoteka);
             this.Controls.Add(this.BtnOdaberiOriginalnuDatoteku);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DigitalniPotpis";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Operacijski sustavi 2 - projekt";

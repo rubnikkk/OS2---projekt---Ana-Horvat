@@ -35,6 +35,8 @@ namespace OS2___projekt___Ana_Horvat
                 File.WriteAllText("iv.txt", Encoding.Default.GetString(iv));
                 hashIv = GetFileHash("iv.txt");
             }
+
+            MessageBox.Show("Ključevi su kreirani!");
         }
 
         private void BtnOdaberiOriginalnuDatoteku_Click(object sender, EventArgs e)
@@ -55,7 +57,7 @@ namespace OS2___projekt___Ana_Horvat
 
         private void BtnKriptirajSimetricnimAlgoritmom_Click(object sender, EventArgs e)
         {
-
+         
             if (Check())
             {
                 string text = System.IO.File.ReadAllText(originalFilePath);
@@ -66,10 +68,6 @@ namespace OS2___projekt___Ana_Horvat
                 hashCypher = GetFileHash("kriptirani_aes.txt");
 
                 TxtKriptiraniTekst.Text = String.Concat(cypher);
-            }
-            else
-            {
-                MessageBox.Show("Došlo je do namjerne promjene sadržaja datoteka, pokušajte ponovno...");
             }
         }
 
@@ -113,11 +111,6 @@ namespace OS2___projekt___Ana_Horvat
             {
                 TxtDekriptiraniAES.Text = DecryptStringFromBytes_Aes(cypher, secretKey, iv);
             }
-            else
-            {
-                MessageBox.Show("Došlo je do namjerne promjene sadržaja datoteka, pokušajte ponovno...");
-            }
-
         }
 
         static string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
@@ -167,13 +160,15 @@ namespace OS2___projekt___Ana_Horvat
             if (!hashSecretKey.SequenceEqual(GetFileHash("tajni_kljuc.txt")))
             {
                 ok = false;
+                MessageBox.Show("Došlo je do promjene sadržaja datoteke tajni_kljuc.txt!");
             }
 
             if (!hashIv.SequenceEqual(GetFileHash("iv.txt")))
             {
                 ok = false;
+                MessageBox.Show("Došlo je do promjene sadržaja datoteke iv.txt!");
             }
-        
+
             return ok;
         }
 

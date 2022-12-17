@@ -37,6 +37,7 @@ namespace OS2___projekt___Ana_Horvat
             string privatniString = RSAParametersToString(privateKey);
             File.WriteAllText("privatni_kljuc.txt", privatniString);
 
+            MessageBox.Show("Ključevi su kreirani!");
         }
 
         private void BtnOdaberiOriginalnuDatoteku_Click(object sender, EventArgs e)
