@@ -84,37 +84,47 @@ namespace OS2___projekt___Ana_Horvat
             // 
             // BtnOdaberiOriginalnuDatoteku
             // 
-            this.BtnOdaberiOriginalnuDatoteku.Location = new System.Drawing.Point(12, 80);
+            this.BtnOdaberiOriginalnuDatoteku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.BtnOdaberiOriginalnuDatoteku.FlatAppearance.BorderSize = 0;
+            this.BtnOdaberiOriginalnuDatoteku.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnOdaberiOriginalnuDatoteku.Location = new System.Drawing.Point(30, 60);
             this.BtnOdaberiOriginalnuDatoteku.Name = "BtnOdaberiOriginalnuDatoteku";
-            this.BtnOdaberiOriginalnuDatoteku.Size = new System.Drawing.Size(179, 23);
+            this.BtnOdaberiOriginalnuDatoteku.Size = new System.Drawing.Size(159, 49);
             this.BtnOdaberiOriginalnuDatoteku.TabIndex = 11;
             this.BtnOdaberiOriginalnuDatoteku.Text = "Odaberi originalnu datoteku";
-            this.BtnOdaberiOriginalnuDatoteku.UseVisualStyleBackColor = true;
+            this.BtnOdaberiOriginalnuDatoteku.UseVisualStyleBackColor = false;
             this.BtnOdaberiOriginalnuDatoteku.Click += new System.EventHandler(this.BtnOdaberiOriginalnuDatoteku_Click);
             // 
             // TxtOriginalnaDatoteka
             // 
-            this.TxtOriginalnaDatoteka.Location = new System.Drawing.Point(12, 135);
+            this.TxtOriginalnaDatoteka.Location = new System.Drawing.Point(30, 135);
+            this.TxtOriginalnaDatoteka.Multiline = true;
             this.TxtOriginalnaDatoteka.Name = "TxtOriginalnaDatoteka";
-            this.TxtOriginalnaDatoteka.Size = new System.Drawing.Size(346, 20);
+            this.TxtOriginalnaDatoteka.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TxtOriginalnaDatoteka.Size = new System.Drawing.Size(346, 136);
             this.TxtOriginalnaDatoteka.TabIndex = 12;
             this.TxtOriginalnaDatoteka.Text = "Ovdje će se prikazati tekst za izračun sažetka.";
             // 
             // BtnIzracunajSazetak
             // 
-            this.BtnIzracunajSazetak.Location = new System.Drawing.Point(404, 132);
+            this.BtnIzracunajSazetak.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.BtnIzracunajSazetak.FlatAppearance.BorderSize = 0;
+            this.BtnIzracunajSazetak.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnIzracunajSazetak.Location = new System.Drawing.Point(30, 298);
             this.BtnIzracunajSazetak.Name = "BtnIzracunajSazetak";
-            this.BtnIzracunajSazetak.Size = new System.Drawing.Size(179, 23);
+            this.BtnIzracunajSazetak.Size = new System.Drawing.Size(159, 49);
             this.BtnIzracunajSazetak.TabIndex = 13;
             this.BtnIzracunajSazetak.Text = "Izračunaj sažetak";
-            this.BtnIzracunajSazetak.UseVisualStyleBackColor = true;
+            this.BtnIzracunajSazetak.UseVisualStyleBackColor = false;
             this.BtnIzracunajSazetak.Click += new System.EventHandler(this.BtnIzracunajSazetak_Click);
             // 
             // TxtSazetak
             // 
-            this.TxtSazetak.Location = new System.Drawing.Point(12, 189);
+            this.TxtSazetak.Location = new System.Drawing.Point(424, 135);
+            this.TxtSazetak.Multiline = true;
             this.TxtSazetak.Name = "TxtSazetak";
-            this.TxtSazetak.Size = new System.Drawing.Size(346, 20);
+            this.TxtSazetak.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TxtSazetak.Size = new System.Drawing.Size(346, 136);
             this.TxtSazetak.TabIndex = 14;
             this.TxtSazetak.Text = "Ovdje će biti prikazan sažetak.";
             // 

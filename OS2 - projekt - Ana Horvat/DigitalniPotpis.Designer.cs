@@ -84,40 +84,51 @@ namespace OS2___projekt___Ana_Horvat
             // 
             // BtnDigitalnoPotpisi
             // 
-            this.BtnDigitalnoPotpisi.Location = new System.Drawing.Point(422, 126);
+            this.BtnDigitalnoPotpisi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.BtnDigitalnoPotpisi.FlatAppearance.BorderSize = 0;
+            this.BtnDigitalnoPotpisi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDigitalnoPotpisi.Location = new System.Drawing.Point(458, 135);
             this.BtnDigitalnoPotpisi.Name = "BtnDigitalnoPotpisi";
-            this.BtnDigitalnoPotpisi.Size = new System.Drawing.Size(179, 23);
+            this.BtnDigitalnoPotpisi.Size = new System.Drawing.Size(159, 49);
             this.BtnDigitalnoPotpisi.TabIndex = 16;
             this.BtnDigitalnoPotpisi.Text = "Digitalno potipši";
-            this.BtnDigitalnoPotpisi.UseVisualStyleBackColor = true;
+            this.BtnDigitalnoPotpisi.UseVisualStyleBackColor = false;
             this.BtnDigitalnoPotpisi.Click += new System.EventHandler(this.BtnDigitalnoPotpisi_Click);
             // 
             // TxtOriginalnaDatoteka
             // 
-            this.TxtOriginalnaDatoteka.Location = new System.Drawing.Point(30, 129);
+            this.TxtOriginalnaDatoteka.Location = new System.Drawing.Point(30, 135);
+            this.TxtOriginalnaDatoteka.Multiline = true;
             this.TxtOriginalnaDatoteka.Name = "TxtOriginalnaDatoteka";
-            this.TxtOriginalnaDatoteka.Size = new System.Drawing.Size(346, 20);
+            this.TxtOriginalnaDatoteka.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TxtOriginalnaDatoteka.Size = new System.Drawing.Size(346, 136);
             this.TxtOriginalnaDatoteka.TabIndex = 15;
             this.TxtOriginalnaDatoteka.Text = "Ovdje će se prikazati sadržaj datoteka za potpisivanje.";
             // 
             // BtnOdaberiOriginalnuDatoteku
             // 
-            this.BtnOdaberiOriginalnuDatoteku.Location = new System.Drawing.Point(30, 74);
+            this.BtnOdaberiOriginalnuDatoteku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.BtnOdaberiOriginalnuDatoteku.FlatAppearance.BorderSize = 0;
+            this.BtnOdaberiOriginalnuDatoteku.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnOdaberiOriginalnuDatoteku.Location = new System.Drawing.Point(30, 60);
             this.BtnOdaberiOriginalnuDatoteku.Name = "BtnOdaberiOriginalnuDatoteku";
-            this.BtnOdaberiOriginalnuDatoteku.Size = new System.Drawing.Size(179, 23);
+            this.BtnOdaberiOriginalnuDatoteku.Size = new System.Drawing.Size(159, 49);
             this.BtnOdaberiOriginalnuDatoteku.TabIndex = 14;
             this.BtnOdaberiOriginalnuDatoteku.Text = "Odaberi originalnu datoteku";
-            this.BtnOdaberiOriginalnuDatoteku.UseVisualStyleBackColor = true;
+            this.BtnOdaberiOriginalnuDatoteku.UseVisualStyleBackColor = false;
             this.BtnOdaberiOriginalnuDatoteku.Click += new System.EventHandler(this.BtnOdaberiOriginalnuDatoteku_Click);
             // 
             // BtnProvjeriDigitalniPotpis
             // 
-            this.BtnProvjeriDigitalniPotpis.Location = new System.Drawing.Point(30, 237);
+            this.BtnProvjeriDigitalniPotpis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.BtnProvjeriDigitalniPotpis.FlatAppearance.BorderSize = 0;
+            this.BtnProvjeriDigitalniPotpis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnProvjeriDigitalniPotpis.Location = new System.Drawing.Point(458, 222);
             this.BtnProvjeriDigitalniPotpis.Name = "BtnProvjeriDigitalniPotpis";
-            this.BtnProvjeriDigitalniPotpis.Size = new System.Drawing.Size(179, 23);
+            this.BtnProvjeriDigitalniPotpis.Size = new System.Drawing.Size(159, 49);
             this.BtnProvjeriDigitalniPotpis.TabIndex = 17;
             this.BtnProvjeriDigitalniPotpis.Text = "Provjeri digitalni potpis";
-            this.BtnProvjeriDigitalniPotpis.UseVisualStyleBackColor = true;
+            this.BtnProvjeriDigitalniPotpis.UseVisualStyleBackColor = false;
             this.BtnProvjeriDigitalniPotpis.Click += new System.EventHandler(this.BtnProvjeriDigitalniPotpis_Click);
             // 
             // DigitalniPotpis
