@@ -16,7 +16,7 @@ namespace OS2___projekt___Ana_Horvat
 {
     public partial class DigitalniPotpis : Form
     {
-        string filename, filelines, originalFilePath;
+        string filename, filelines, originalFilePath, digitalHash;
         public DigitalniPotpis()
         {
             InitializeComponent();
@@ -49,7 +49,10 @@ namespace OS2___projekt___Ana_Horvat
             File.WriteAllText("hash_digitalni.txt", hash);
 
             string hashEncrypted = Cryptography.DigitalSignature.EncryptText(hash, inputKey);
-            File.WriteAllText("hashEncrypted.txt", hashEncrypted);           
+            File.WriteAllText("hashEncrypted.txt", hashEncrypted);
+            digitalHash = Cryptography.DigitalSignature.Hash(hashEncrypted);
+
+            MessageBox.Show("Datoteka je digitalno potpisana!");
         }
 
         private void BtnProvjeriDigitalniPotpis_Click(object sender, EventArgs e)
@@ -60,17 +63,26 @@ namespace OS2___projekt___Ana_Horvat
 
             string inputSignature = System.IO.File.ReadAllText("hashEncrypted.txt");
 
-            string decryptedHash = Cryptography.DigitalSignature.DecryptText(inputSignature, inputKey);
-            string hash = Cryptography.DigitalSignature.Hash(inputFile);
-
-            if (decryptedHash == hash)
+            try
             {
-                MessageBox.Show("Potpis je valjan!");
+                string decryptedHash = Cryptography.DigitalSignature.DecryptText(inputSignature, inputKey);
+                string hash = Cryptography.DigitalSignature.Hash(inputFile);
+
+                string newDigitalHash = Cryptography.DigitalSignature.Hash(inputSignature);
+
+                if (decryptedHash == hash && digitalHash == newDigitalHash)
+                {
+                    MessageBox.Show("Potpis je valjan!");
+                }
+                else
+                {
+                    MessageBox.Show("Potpis nije valjan! Došlo je do promjene izvornih datoteka!");
+                }
             }
-            else
+            catch
             {
                 MessageBox.Show("Potpis nije valjan! Došlo je do promjene izvornih datoteka!");
-            }
+            }           
         }
         private void simetricnaKriptografijaToolStripMenuItem_Click(object sender, EventArgs e)
         {
