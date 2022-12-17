@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 
+//TODO vratiti prvotni sadržaj datoteke
+//TODO provjeriti hash u smislu ako ga je netko mijenjal
+
 namespace OS2___projekt___Ana_Horvat
 {
     public partial class IzracunSazetka : Form
@@ -21,30 +24,6 @@ namespace OS2___projekt___Ana_Horvat
         {
             InitializeComponent();
             izracunSazetkaToolStripMenuItem.BackColor = Color.FromArgb(204, 229, 255);
-        }
-
-        private void simetricnaKriptografijaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            Simetricna simetricna = new Simetricna();
-            simetricna.FormClosed += (s, args) => this.Close();
-            simetricna.Show();
-        }
-
-        private void asimetricnaKriptografijaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            Asimetricna asimetricna = new Asimetricna();
-            asimetricna.FormClosed += (s, args) => this.Close();
-            asimetricna.Show();
-        }
-
-        private void digitalniPotpisToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            DigitalniPotpis digitalniPotpis = new DigitalniPotpis();
-            digitalniPotpis.FormClosed += (s, args) => this.Close();
-            digitalniPotpis.Show();
         }
 
         private void BtnOdaberiOriginalnuDatoteku_Click(object sender, EventArgs e)
@@ -87,7 +66,29 @@ namespace OS2___projekt___Ana_Horvat
             TxtSazetak.Text = hash;
         }
 
-        //TODO vratiti prvotni sadržaj datoteke
-        //TODO provjeriti hash u smislu ako ga je netko mijenjal
+        private void simetricnaKriptografijaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Simetricna simetricna = new Simetricna();
+            simetricna.FormClosed += (s, args) => this.Close();
+            simetricna.Show();
+        }
+
+        private void asimetricnaKriptografijaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Asimetricna asimetricna = new Asimetricna();
+            asimetricna.FormClosed += (s, args) => this.Close();
+            asimetricna.Show();
+        }
+
+        private void digitalniPotpisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            DigitalniPotpis digitalniPotpis = new DigitalniPotpis();
+            digitalniPotpis.FormClosed += (s, args) => this.Close();
+            digitalniPotpis.Show();
+        }
+
     }
 }

@@ -24,30 +24,6 @@ namespace OS2___projekt___Ana_Horvat
             digitalniPotpisToolStripMenuItem.BackColor = Color.FromArgb(204, 229, 255);
         }
 
-        private void simetricnaKriptografijaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            Simetricna simetricna = new Simetricna();
-            simetricna.FormClosed += (s, args) => this.Close();
-            simetricna.Show();
-        }
-
-        private void asimetricnaKriptografijaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            Asimetricna asimetricna = new Asimetricna();
-            asimetricna.FormClosed += (s, args) => this.Close();
-            asimetricna.Show();
-        }
-
-        private void izracunSazetkaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            IzracunSazetka izracunSazetka = new IzracunSazetka();
-            izracunSazetka.FormClosed += (s, args) => this.Close();
-            izracunSazetka.Show();
-        }
-
         private void BtnOdaberiOriginalnuDatoteku_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -95,6 +71,29 @@ namespace OS2___projekt___Ana_Horvat
             {
                 MessageBox.Show("Potpis nije valjan!");
             }
+        }
+        private void simetricnaKriptografijaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Simetricna simetricna = new Simetricna();
+            simetricna.FormClosed += (s, args) => this.Close();
+            simetricna.Show();
+        }
+
+        private void asimetricnaKriptografijaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Asimetricna asimetricna = new Asimetricna();
+            asimetricna.FormClosed += (s, args) => this.Close();
+            asimetricna.Show();
+        }
+
+        private void izracunSazetkaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            IzracunSazetka izracunSazetka = new IzracunSazetka();
+            izracunSazetka.FormClosed += (s, args) => this.Close();
+            izracunSazetka.Show();
         }
     }
 }

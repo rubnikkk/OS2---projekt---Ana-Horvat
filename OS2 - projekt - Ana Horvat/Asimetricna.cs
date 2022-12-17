@@ -27,21 +27,6 @@ namespace OS2___projekt___Ana_Horvat
             asimetricnaKriptografijaToolStripMenuItem1.BackColor = Color.FromArgb(204, 229, 255);
         }
 
-        private static string RSAParametersToString (RSAParameters parameter)
-        {
-            var sw = new System.IO.StringWriter();
-            var xs = new System.Xml.Serialization.XmlSerializer(typeof(RSAParameters));
-            xs.Serialize(sw, parameter);
-            return sw.ToString();
-        }
-
-        public static RSAParameters StringToRSAParameters(string key)
-        {
-            var sr = new System.IO.StringReader(key);
-            var xs = new System.Xml.Serialization.XmlSerializer(typeof(RSAParameters));
-            return (RSAParameters)xs.Deserialize(sr);
-        }
-
         private void BtnKreirajKljuceve_Click(object sender, EventArgs e)
         {
        
@@ -120,6 +105,21 @@ namespace OS2___projekt___Ana_Horvat
             }
         }
 
+        private static string RSAParametersToString(RSAParameters parameter)
+        {
+            var sw = new System.IO.StringWriter();
+            var xs = new System.Xml.Serialization.XmlSerializer(typeof(RSAParameters));
+            xs.Serialize(sw, parameter);
+            return sw.ToString();
+        }
+
+        public static RSAParameters StringToRSAParameters(string key)
+        {
+            var sr = new System.IO.StringReader(key);
+            var xs = new System.Xml.Serialization.XmlSerializer(typeof(RSAParameters));
+            return (RSAParameters)xs.Deserialize(sr);
+        }
+
         private void simetricnaKriptografijaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Visible = false;
@@ -142,7 +142,6 @@ namespace OS2___projekt___Ana_Horvat
             DigitalniPotpis digitalniPotpis = new DigitalniPotpis();
             digitalniPotpis.FormClosed += (s, args) => this.Close();
             digitalniPotpis.Show();
-        }
-              
+        }             
     }
 }
