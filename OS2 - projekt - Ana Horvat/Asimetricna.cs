@@ -13,12 +13,11 @@ using System.Xml.Serialization;
 
 namespace OS2___projekt___Ana_Horvat
 {
+  
     public partial class Asimetricna : Form
     {
+        string originalRSAFilePath, filelines, filename;
         RSACryptoServiceProvider csp = new RSACryptoServiceProvider(2048);
-        string filelines;
-        string filename;
-
         RSAParameters publicKey, privateKey;
 
         public Asimetricna()
@@ -51,6 +50,7 @@ namespace OS2___projekt___Ana_Horvat
             {
                 filename = openFileDialog.FileName;
                 filelines = String.Concat(File.ReadAllLines(filename));
+                originalRSAFilePath = Path.GetFullPath(filename);
                 TxtOriginalnaDatoteka.Text = filelines;
             }
         }
@@ -59,8 +59,8 @@ namespace OS2___projekt___Ana_Horvat
         {
             try
             {
-                string plainText = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\rsa_originalna.txt");
-                string publicKeyFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\javni_kljuc.txt");
+                string plainText = System.IO.File.ReadAllText(originalRSAFilePath);
+                string publicKeyFile = System.IO.File.ReadAllText("javni_kljuc.txt");
 
                 RSAParameters publicKey = StringToRSAParameters(publicKeyFile);
 
@@ -85,8 +85,8 @@ namespace OS2___projekt___Ana_Horvat
         {
             try
             {
-                string inputCypherTextFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\rsaCypherText.txt");
-                string privateKeyFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\privatni_kljuc.txt");
+                string inputCypherTextFile = System.IO.File.ReadAllText("rsaCypherText.txt");
+                string privateKeyFile = System.IO.File.ReadAllText("privatni_kljuc.txt");
 
                 RSAParameters privateKey = StringToRSAParameters(privateKeyFile);
 

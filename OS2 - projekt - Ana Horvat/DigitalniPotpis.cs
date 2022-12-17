@@ -16,8 +16,7 @@ namespace OS2___projekt___Ana_Horvat
 {
     public partial class DigitalniPotpis : Form
     {
-        string filename;
-        string filelines;
+        string filename, filelines, originalFilePath;
         public DigitalniPotpis()
         {
             InitializeComponent();
@@ -35,14 +34,15 @@ namespace OS2___projekt___Ana_Horvat
             {
                 filename = openFileDialog.FileName;
                 filelines = String.Concat(File.ReadAllLines(filename));
+                originalFilePath = Path.GetFullPath(filename);
                 TxtOriginalnaDatoteka.Text = filelines;
             }
         }
 
         private void BtnDigitalnoPotpisi_Click(object sender, EventArgs e)
         {
-            string inputFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\datoteka.txt");            
-            string inputKeyFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\javni_kljuc.txt");
+            string inputFile = System.IO.File.ReadAllText(originalFilePath);            
+            string inputKeyFile = System.IO.File.ReadAllText("javni_kljuc.txt");
             RSAParameters inputKey = Cryptography.DigitalSignature.StringToRSAParameters(inputKeyFile);
 
             string hash = Cryptography.DigitalSignature.Hash(inputFile);
@@ -54,11 +54,11 @@ namespace OS2___projekt___Ana_Horvat
 
         private void BtnProvjeriDigitalniPotpis_Click(object sender, EventArgs e)
         {
-            string inputFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\datoteka.txt");
-            string inputKeyFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\privatni_kljuc.txt");
+            string inputFile = System.IO.File.ReadAllText(originalFilePath);
+            string inputKeyFile = System.IO.File.ReadAllText("privatni_kljuc.txt");
             RSAParameters inputKey = Cryptography.DigitalSignature.StringToRSAParameters(inputKeyFile);
 
-            string inputSignature = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\hashEncrypted.txt");
+            string inputSignature = System.IO.File.ReadAllText("hashEncrypted.txt");
 
             string decryptedHash = Cryptography.DigitalSignature.DecryptText(inputSignature, inputKey);
             string hash = Cryptography.DigitalSignature.Hash(inputFile);

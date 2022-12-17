@@ -14,14 +14,9 @@ namespace OS2___projekt___Ana_Horvat
 {
     public partial class Simetricna : Form
     {
-        string filelines;
-        string filename;
-        byte[] secretKey;
-        byte[] iv;
-        byte[] cypher;
-        byte[] hashSecretKey;
-        byte[] hashIv;
-        byte[] hashCypher;
+        string filelines, filename, originalFilePath;
+        byte[] secretKey, iv, cypher, hashSecretKey, hashIv, hashCypher;
+
         public Simetricna()
         {
             InitializeComponent();
@@ -52,6 +47,7 @@ namespace OS2___projekt___Ana_Horvat
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 filename = openFileDialog.FileName;
+                originalFilePath = Path.GetFullPath(filename);
                 filelines = String.Concat(File.ReadAllLines(filename));
                 TxtOriginalnaDatoteka.Text = filelines;
             }
@@ -62,7 +58,7 @@ namespace OS2___projekt___Ana_Horvat
 
             if (Check())
             {
-                string text = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\aes_originalna.txt");
+                string text = System.IO.File.ReadAllText(originalFilePath);
 
                 cypher = EncryptStringToBytes_Aes(text, secretKey, iv);
 

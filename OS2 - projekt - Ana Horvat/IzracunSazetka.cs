@@ -17,8 +17,7 @@ namespace OS2___projekt___Ana_Horvat
 {
     public partial class IzracunSazetka : Form
     {
-        string filename;
-        string filelines;
+        string filename, filelines, originalFilePath;
 
         public IzracunSazetka()
         {
@@ -37,6 +36,7 @@ namespace OS2___projekt___Ana_Horvat
             {
                 filename = openFileDialog.FileName;
                 filelines = String.Concat(File.ReadAllLines(filename));
+                originalFilePath = Path.GetFullPath(filename);
                 TxtOriginalnaDatoteka.Text = filelines;
             }
         }
@@ -58,7 +58,7 @@ namespace OS2___projekt___Ana_Horvat
 
         private void BtnIzracunajSazetak_Click(object sender, EventArgs e)
         {
-            string inputFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\original_sazetak.txt");
+            string inputFile = System.IO.File.ReadAllText(originalFilePath);
             string hash = Hash(inputFile);
             
             File.WriteAllText("sazetak.txt", hash);
