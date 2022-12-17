@@ -10,9 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 
-//TODO vratiti prvotni sadržaj datoteke
-//TODO provjeriti hash u smislu ako ga je netko mijenjal
-
 namespace OS2___projekt___Ana_Horvat
 {
     public partial class IzracunSazetka : Form

@@ -69,7 +69,7 @@ namespace OS2___projekt___Ana_Horvat
             }
             else
             {
-                MessageBox.Show("Potpis nije valjan!");
+                MessageBox.Show("Potpis nije valjan! Došlo je do promjene izvornih datoteka!");
             }
         }
         private void simetricnaKriptografijaToolStripMenuItem_Click(object sender, EventArgs e)
