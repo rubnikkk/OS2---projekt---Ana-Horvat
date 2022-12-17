@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.IO;
+using Cryptography;
+
 
 namespace OS2___projekt___Ana_Horvat
 {
@@ -65,72 +67,25 @@ namespace OS2___projekt___Ana_Horvat
         {
             string inputFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\datoteka.txt");            
             string inputKeyFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\javni_kljuc.txt");
-            RSAParameters inputKey = StringToRSAParameters(inputKeyFile);
+            RSAParameters inputKey = Cryptography.DigitalSignature.StringToRSAParameters(inputKeyFile);
 
-            string hash = Hash(inputFile);
+            string hash = Cryptography.DigitalSignature.Hash(inputFile);
             File.WriteAllText("hash_digitalni.txt", hash);
 
-            string hashEncrypted = EncryptText(hash, inputKey);
+            string hashEncrypted = Cryptography.DigitalSignature.EncryptText(hash, inputKey);
             File.WriteAllText("hashEncrypted.txt", hashEncrypted);           
-        }
-
-        public static RSAParameters StringToRSAParameters(string key)
-        {
-            var sr = new System.IO.StringReader(key);
-            var xs = new System.Xml.Serialization.XmlSerializer(typeof(RSAParameters));
-            return (RSAParameters)xs.Deserialize(sr);
-        }
-
-        public static string Hash(string plainText)
-        {
-            SHA256Managed managed = new SHA256Managed();
-            StringBuilder hash = new StringBuilder();
-
-            byte[] computeHash = managed.ComputeHash(Encoding.UTF8.GetBytes(plainText));
-
-            foreach (byte b in computeHash)
-            {
-                hash.Append(b.ToString("x2"));
-            }
-
-            return hash.ToString();
-        }
-
-        public static string EncryptText(string plainText, RSAParameters publicKey)
-        {
-            RSACryptoServiceProvider csp = new RSACryptoServiceProvider();
-
-            csp.ImportParameters(publicKey);
-
-            var bytesPlainText = System.Text.Encoding.Unicode.GetBytes(plainText);
-            var bytesCypherText = csp.Encrypt(bytesPlainText, false);
-
-            return Convert.ToBase64String(bytesCypherText);
-        }
-
-        public static string DecryptText(string cypherText, RSAParameters privateKey)
-        {
-
-            RSACryptoServiceProvider csp = new RSACryptoServiceProvider();
-
-            csp.ImportParameters(privateKey);
-
-            var bytesCypherText = Convert.FromBase64String(cypherText);
-            var bytesPlainText = csp.Decrypt(bytesCypherText, false);
-
-            return Encoding.Unicode.GetString(bytesPlainText);
         }
 
         private void BtnProvjeriDigitalniPotpis_Click(object sender, EventArgs e)
         {
             string inputFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\datoteka.txt");
             string inputKeyFile = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\privatni_kljuc.txt");
-            RSAParameters inputKey = StringToRSAParameters(inputKeyFile);
+            RSAParameters inputKey = Cryptography.DigitalSignature.StringToRSAParameters(inputKeyFile);
 
             string inputSignature = System.IO.File.ReadAllText(@"C:\Users\38591\Desktop\OS2\OS2 - projekt - Ana Horvat\OS2 - projekt - Ana Horvat\bin\Debug\hashEncrypted.txt");
 
-            string decryptedHash = DecryptText(inputSignature, inputKey);
-            string hash = Hash(inputFile);
+            string decryptedHash = Cryptography.DigitalSignature.DecryptText(inputSignature, inputKey);
+            string hash = Cryptography.DigitalSignature.Hash(inputFile);
 
             if (decryptedHash == hash)
             {
